@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Great Place To Work® Deutschland – Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #c8102e;
+    --red-dark: #a00c24;
+    --gray-dark: #1a1a1a;
+    --gray-mid: #555;
+    --gray-light: #f5f5f5;
+    --white: #fff;
+    --border: #e0e0e0;
+    --font: 'Source Sans 3', sans-serif;
+    --shadow: 0 2px 16px rgba(0,0,0,0.09);
+  }
+
+  body { font-family: var(--font); color: var(--gray-dark); background: var(--white); font-size: 16px; line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    background: var(--gray-dark);
+    color: #aaa;
+    font-size: 12px;
+    padding: 6px 0;
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar a { color: #aaa; }
+  .topbar a:hover { color: #fff; }
+  .country-selector { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+  .country-selector span { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 48px; height: 48px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 13px; letter-spacing: -1px;
+    flex-shrink: 0;
+  }
+  .logo-text { font-size: 14px; font-weight: 700; line-height: 1.2; color: var(--gray-dark); max-width: 140px; }
+  .logo-text span { color: var(--red); }
+
+  nav { display: flex; gap: 0; }
+  .nav-item {
+    position: relative;
+    padding: 0 16px;
+    height: 72px;
+    display: flex; align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color .2s;
+    white-space: nowrap;
+  }
+  .nav-item:hover { color: var(--red); }
+  .nav-item .arrow { margin-left: 4px; font-size: 10px; }
+
+  .nav-item:hover .dropdown { display: block; }
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 72px; left: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    min-width: 260px;
+    box-shadow: var(--shadow);
+    z-index: 999;
+  }
+  .dropdown a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 400;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background .15s;
+  }
+  .dropdown a:hover { background: var(--gray-light); color: var(--red); }
+  .dropdown a strong { display: block; font-weight: 600; font-size: 13px; }
+  .dropdown a small { color: var(--gray-mid); font-size: 11px; line-height: 1.4; }
+
+  .header-cta {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .btn-login {
+    border: 2px solid var(--red);
+    color: var(--red);
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    transition: all .2s;
+    border-radius: 2px;
+  }
+  .btn-login:hover { background: var(--red); color: #fff; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, #fafafa 0%, #fff 60%);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px 60px;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+    border-radius: 1px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--gray-dark);
+    margin-bottom: 20px;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--gray-mid);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: .3px;
+    border-radius: 2px;
+    transition: background .2s, transform .1s;
+  }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  .hero-img-wrap {
+    position: relative;
+  }
+  .hero-img-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-img-inner {
+    width: 85%;
+    height: 85%;
+    background: linear-gradient(135deg, #ddd 0%, #c8c8c8 100%);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .hero-people { font-size: 80px; line-height: 1; }
+  .hero-img-label { font-size: 13px; color: #888; font-weight: 600; }
+
+  /* ─── SOLUTIONS ─── */
+  .solutions { padding: 80px 24px; background: var(--white); }
+  .solutions-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    margin-bottom: 48px;
+    color: var(--gray-dark);
+  }
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .solution-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow .2s, transform .2s;
+    cursor: pointer;
+  }
+  .solution-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+  .solution-card-img {
+    height: 160px;
+    background: var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+  .solution-card-body { padding: 16px; }
+  .solution-card-body h3 { font-size: 15px; font-weight: 700; color: var(--red); }
+
+  /* ─── STATS ─── */
+  .stats-section {
+    background: var(--gray-dark);
+    color: #fff;
+    padding: 70px 24px;
+  }
+  .stats-inner { max-width: 1200px; margin: 0 auto; }
+  .stats-header { max-width: 600px; margin-bottom: 48px; }
+  .stats-header .section-label { color: #f88; }
+  .stats-header h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 700; color: #fff; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .stat-card { border-left: 3px solid var(--red); padding-left: 20px; }
+  .stat-number { font-size: clamp(32px, 4vw, 52px); font-weight: 700; color: #fff; line-height: 1; }
+  .stat-unit { font-size: 14px; color: #aaa; margin-top: 4px; }
+  .stat-desc { font-size: 13px; color: #bbb; margin-top: 8px; line-height: 1.5; }
+  .stat-direction { display: inline-block; font-size: 12px; background: var(--red); color: #fff; padding: 2px 8px; border-radius: 2px; margin-bottom: 8px; font-weight: 700; }
+
+  /* ─── AWARDS ─── */
+  .awards { background: var(--red); color: #fff; padding: 70px 24px; }
+  .awards-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .awards h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 700; margin-bottom: 16px; }
+  .awards p { font-size: 15px; opacity: .9; line-height: 1.7; margin-bottom: 28px; }
+  .btn-white {
+    display: inline-block;
+    background: #fff;
+    color: var(--red);
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 2px;
+    transition: background .2s;
+  }
+  .btn-white:hover { background: #f0f0f0; }
+  .awards-badges { display: flex; gap: 20px; flex-wrap: wrap; }
+  .badge {
+    width: 100px; height: 100px;
+    background: rgba(255,255,255,.15);
+    border: 2px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+  .badge-icon { font-size: 28px; }
+  .badge-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; line-height: 1.2; }
+
+  /* ─── TRENDING ─── */
+  .trending { padding: 80px 24px; background: var(--gray-light); }
+  .trending-inner { max-width: 1200px; margin: 0 auto; }
+  .trending h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 700; margin-bottom: 8px; }
+  .trending p.sub { color: var(--gray-mid); margin-bottom: 40px; }
+  .trending-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .trending-card {
+    background: var(--white);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: box-shadow .2s;
+  }
+  .trending-card:hover { box-shadow: var(--shadow); }
+  .trending-card-tag {
+    background: var(--red);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    display: inline-block;
+    margin: 16px 16px 0;
+    border-radius: 1px;
+  }
+  .trending-card-body { padding: 16px; }
+  .trending-card-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+  .trending-card-body p { font-size: 13px; color: var(--gray-mid); margin-bottom: 14px; line-height: 1.5; }
+  .link-red { color: var(--red); font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+  .link-red:hover { text-decoration: underline; }
+
+  /* ─── MISSION ─── */
+  .mission { padding: 80px 24px; background: var(--white); }
+  .mission-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .mission h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 700; margin-bottom: 20px; }
+  .mission p { color: var(--gray-mid); line-height: 1.7; margin-bottom: 24px; }
+  .mission-features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .mf-item { padding: 16px; border: 1px solid var(--border); border-radius: 4px; }
+  .mf-item h4 { font-size: 13px; font-weight: 700; color: var(--red); margin-bottom: 6px; }
+  .mf-item p { font-size: 12px; color: var(--gray-mid); margin: 0; }
+  .mission-img-wrap { position: relative; }
+  .mission-collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+    height: 380px;
+  }
+  .mission-collage-cell {
+    background: var(--gray-light);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+  }
+  .mission-collage-cell:first-child { grid-row: span 2; font-size: 60px; }
+
+  /* ─── CONTACT ─── */
+  .contact-section { padding: 80px 24px; background: var(--gray-light); }
+  .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+  .contact-form h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .contact-form p { color: var(--gray-mid); margin-bottom: 24px; font-size: 14px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: var(--font);
+    font-size: 14px;
+    background: var(--white);
+    transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+  .form-group textarea { height: 100px; resize: vertical; }
+  .newsletter-box { background: var(--gray-dark); color: #fff; padding: 36px; border-radius: 4px; }
+  .newsletter-box h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+  .newsletter-box p { font-size: 13px; color: #bbb; margin-bottom: 20px; line-height: 1.5; }
+  .newsletter-input { display: flex; gap: 8px; }
+  .newsletter-input input { flex: 1; padding: 10px 14px; border: none; border-radius: 2px; font-size: 14px; }
+  .newsletter-input button { background: var(--red); color: #fff; border: none; padding: 10px 20px; font-weight: 700; font-size: 13px; cursor: pointer; border-radius: 2px; transition: background .2s; }
+  .newsletter-input button:hover { background: var(--red-dark); }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--gray-dark); color: #aaa; padding: 60px 24px 30px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 200px repeat(4, 1fr); gap: 40px; margin-bottom: 48px; }
+  .footer-brand .logo-icon { width: 56px; height: 56px; font-size: 14px; margin-bottom: 16px; }
+  .footer-brand p { font-size: 12px; line-height: 1.6; color: #888; }
+  .footer-col h4 { color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; }
+  .footer-col ul li a { font-size: 13px; color: #888; transition: color .2s; }
+  .footer-col ul li a:hover { color: var(--red); }
+  .footer-bottom { border-top: 1px solid #333; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #666; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom a { color: #666; }
+  .footer-bottom a:hover { color: #aaa; }
+  .social-links { display: flex; gap: 12px; }
+  .social-link {
+    width: 34px; height: 34px;
+    border: 1px solid #444;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: #888;
+    transition: all .2s;
+  }
+  .social-link:hover { border-color: var(--red); color: var(--red); }
+
+  /* ─── STICKY BANNER ─── */
+  .sticky-banner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--gray-dark);
+    color: #fff;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 500;
+    border-top: 3px solid var(--red);
+    font-size: 13px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .sticky-banner strong { color: var(--red); }
+  .sticky-banner-text { flex: 1; }
+  .sticky-banner .btn-primary { padding: 8px 20px; font-size: 13px; white-space: nowrap; }
+  .banner-close { cursor: pointer; color: #888; font-size: 18px; margin-left: 8px; line-height: 1; }
+  .banner-close:hover { color: #fff; }
+
+  /* ─── CHATBOT ─── */
+  .chatbot-fab {
+    position: fixed;
+    bottom: 80px; right: 28px;
+    z-index: 2000;
+  }
+  .chatbot-bubble {
+    width: 60px; height: 60px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(200,16,46,.4);
+    transition: transform .2s, box-shadow .2s;
+    position: relative;
+  }
+  .chatbot-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(200,16,46,.5); }
+  .chatbot-bubble svg { width: 28px; height: 28px; fill: #fff; }
+  .chat-pulse {
+    position: absolute;
+    top: -2px; right: -2px;
+    width: 16px; height: 16px;
+    background: #22c55e;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.3);opacity:.7} }
+
+  .chatbot-window {
+    position: fixed;
+    bottom: 156px; right: 28px;
+    width: 380px;
+    height: 560px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0,0,0,.18);
+    display: flex;
+    flex-direction: column;
+    z-index: 2001;
+    overflow: hidden;
+    transition: opacity .2s, transform .2s;
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .chatbot-window.open {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .chat-header {
+    background: var(--red);
+    color: #fff;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .chat-avatar {
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .chat-header-info h4 { font-size: 15px; font-weight: 700; }
+  .chat-header-info p { font-size: 11px; opacity: .8; }
+  .chat-close { margin-left: auto; cursor: pointer; font-size: 22px; opacity: .8; line-height: 1; }
+  .chat-close:hover { opacity: 1; }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #fafafa;
+  }
+  .chat-msg {
+    max-width: 82%;
+    font-size: 14px;
+    line-height: 1.5;
+    animation: msgIn .2s ease;
+  }
+  @keyframes msgIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+  .chat-msg.bot { align-self: flex-start; }
+  .chat-msg.user { align-self: flex-end; }
+
+  .chat-bubble {
+    padding: 10px 14px;
+    border-radius: 12px;
+    line-height: 1.55;
+  }
+  .chat-msg.bot .chat-bubble { background: #fff; border: 1px solid var(--border); color: var(--gray-dark); border-radius: 2px 12px 12px 12px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  .chat-msg.user .chat-bubble { background: var(--red); color: #fff; border-radius: 12px 2px 12px 12px; }
+  .chat-sender { font-size: 11px; color: #999; margin-bottom: 4px; font-weight: 600; }
+
+  .chat-typing { display: flex; align-items: center; gap: 4px; padding: 10px 14px; }
+  .typing-dot { width: 7px; height: 7px; background: #bbb; border-radius: 50%; animation: typingDot 1.2s infinite; }
+  .typing-dot:nth-child(2) { animation-delay: .2s; }
+  .typing-dot:nth-child(3) { animation-delay: .4s; }
+  @keyframes typingDot { 0%,80%,100%{transform:scale(1);opacity:.5} 40%{transform:scale(1.3);opacity:1} }
+
+  .chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 16px 8px;
+    background: #fafafa;
+  }
+  .chat-chip {
+    background: #fff;
+    border: 1px solid var(--red);
+    color: var(--red);
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .15s;
+    font-weight: 600;
+  }
+  .chat-chip:hover { background: var(--red); color: #fff; }
+
+  .chat-input-row {
+    padding: 12px 16px;
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid var(--border);
+    background: var(--white);
+    flex-shrink: 0;
+  }
+  #chatInput {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 10px 16px;
+    font-family: var(--font);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  #chatInput:focus { border-color: var(--red); }
+  #chatSend {
+    width: 40px; height: 40px;
+    background: var(--red);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+    flex-shrink: 0;
+  }
+  #chatSend:hover { background: var(--red-dark); }
+  #chatSend svg { width: 18px; height: 18px; fill: #fff; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { display: none; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-img-wrap { display: none; }
+    .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .awards-inner { grid-template-columns: 1fr; }
+    .mission-inner { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .trending-grid { grid-template-columns: 1fr; }
+    .chatbot-window { width: calc(100vw - 32px); right: 16px; bottom: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>📞 <a href="tel:+49221933350">+49 (0)221 93 335 0</a> &nbsp;|&nbsp; <a href="mailto:info@greatplacetowork.de">info@greatplacetowork.de</a></span>
+    <div class="country-selector">
+      <span>🌍 Germany | DE</span> ▾
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">GPTW</div>
+      <div class="logo-text">Great Place<br>To <span>Work</span><sup style="font-size:9px">®</sup></div>
+    </div>
+    <nav>
+      <div class="nav-item">Zertifizierung <span class="arrow">▾</span>
+        <div class="dropdown">
+          <a href="#"><strong>Zertifizierung</strong><small>Messung, Prüfung und Entwicklung einer attraktiven Arbeitsplatzkultur</small></a>
+          <a href="#"><strong>Zertifizierte Arbeitgeber</strong><small>Übersicht der zertifizierten Arbeitgeber</small></a>
+          <a href="#"><strong>FAQ</strong><small>Häufige Fragen zur Zertifizierung</small></a>
+        </div>
+      </div>
+      <div class="nav-item">Angebot <span class="arrow">▾</span>
+        <div class="dropdown">
+          <a href="#"><strong>Mitarbeiterbefragung</strong><small>Gewinnen Sie Einblicke für die richtigen Maßnahmen</small></a>
+          <a href="#"><strong>Arbeitgeberwettbewerbe</strong><small>Beste Arbeitgeber Siegel & Sichtbarkeit</small></a>
+          <a href="#"><strong>Consulting</strong><small>Beratung, Workshops, Trainings</small></a>
+          <a href="#"><strong>Academy</strong><small>Trainings- und Ausbildungsangebote</small></a>
+        </div>
+      </div>
+      <div class="nav-item">Beste Arbeitgeber <span class="arrow">▾</span>
+        <div class="dropdown">
+          <a href="#"><strong>Deutschlands Beste Arbeitgeber 2026</strong><small>Top 100 in verschiedenen Größenklassen</small></a>
+          <a href="#"><strong>Branchen &amp; Regionen</strong><small>11 Branchen- und Regionalwettbewerbe</small></a>
+          <a href="#"><strong>Beste Arbeitgeber für Frauen</strong></a>
+          <a href="#"><strong>Weltweit Beste Arbeitgeber</strong></a>
+        </div>
+      </div>
+      <div class="nav-item">Ressourcen <span class="arrow">▾</span>
+        <div class="dropdown">
+          <a href="#"><strong>Blog</strong></a>
+          <a href="#"><strong>Downloads</strong></a>
+          <a href="#"><strong>Podcast</strong></a>
+          <a href="#"><strong>Testimonials</strong></a>
+        </div>
+      </div>
+      <div class="nav-item">Events <span class="arrow">▾</span>
+        <div class="dropdown">
+          <a href="#"><strong>Events</strong></a>
+          <a href="#"><strong>On Demand Webinare</strong></a>
+          <a href="#"><strong>Certification Nation Day</strong></a>
+        </div>
+      </div>
+      <div class="nav-item">Über uns <span class="arrow">▾</span>
+        <div class="dropdown">
+          <a href="#"><strong>Unsere Mission</strong></a>
+          <a href="#"><strong>Unser Team</strong></a>
+          <a href="#"><strong>Karriere</strong></a>
+          <a href="#"><strong>FAQ</strong></a>
+        </div>
+      </div>
+    </nav>
+    <div class="header-cta">
+      <a href="#" class="btn-login">LOG IN</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Great Place To Work® Deutschland</div>
+      <h1>Mitarbeiterzufriedenheit messen, verbessern und auszeichnen.</h1>
+      <p>Mit der Great Place To Work® Zertifizierung zeigen Sie, dass Ihre Unternehmenskultur stark ist – und heben sich als attraktiver Arbeitgeber hervor. Wir unterstützen Unternehmen dabei, ihre Arbeitsplatzkultur zu analysieren und nachhaltig zu verbessern.</p>
+      <a href="#kontakt" class="btn-primary">Jetzt Kontakt aufnehmen</a>
+    </div>
+    <div class="hero-img-wrap">
+      <div class="hero-img-placeholder">
+        <div class="hero-img-inner">
+          <div class="hero-people">👥</div>
+          <div class="hero-img-label">Lächelnde Mitarbeitende</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="solutions">
+  <div class="solutions-inner">
+    <div class="section-label">Great Place To Work® Services</div>
+    <h2 class="section-title">Unsere Lösungen für eine herausragende Arbeitsplatzkultur</h2>
+    <div class="solutions-grid">
+      <div class="solution-card">
+        <div class="solution-card-img">📊</div>
+        <div class="solution-card-body"><h3>Mitarbeiterbefragung</h3></div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card-img">🏆</div>
+        <div class="solution-card-body"><h3>Zertifizierung</h3></div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card-img">🥇</div>
+        <div class="solution-card-body"><h3>Beste Arbeitgeber Listen</h3></div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card-img">💡</div>
+        <div class="solution-card-body"><h3>Consulting</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS BANNER -->
+<section class="awards">
+  <div class="awards-inner">
+    <div>
+      <div class="section-label" style="color:rgba(255,255,255,.6)">Deutschlands Beste Arbeitgeber 2026</div>
+      <h2>Die 100 besten Arbeitgeber Deutschlands 2026 wurden ausgezeichnet!</h2>
+      <p>Am 19. März 2026 haben wir die 100 besten Arbeitgeber Deutschlands in unterschiedlichen Größenklassen ausgezeichnet. Entdecken Sie jetzt die Gewinnerliste.</p>
+      <a href="#" class="btn-white">Hier geht es zur Siegerliste</a>
+    </div>
+    <div class="awards-badges">
+      <div class="badge"><div class="badge-icon">🏆</div><div class="badge-label">Beste Arbeitgeber 2026</div></div>
+      <div class="badge"><div class="badge-icon">👩</div><div class="badge-label">Beste Arbeitgeber für Frauen</div></div>
+      <div class="badge"><div class="badge-icon">⭐</div><div class="badge-label">Young Talents 2026</div></div>
+      <div class="badge"><div class="badge-icon">🌍</div><div class="badge-label">Weltweit Beste</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stats-header">
+      <div class="section-label">Warum sich eine Zertifizierung auszahlt</div>
+      <h2>Von Great Place To Work® ausgezeichnete Unternehmen heben sich deutlich ab.</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-direction">↑ MEHR</div>
+        <div class="stat-number">2,1×</div>
+        <div class="stat-unit">Bewerbungsquote</div>
+        <div class="stat-desc">Zertifizierte Unternehmen erhalten deutlich mehr Bewerbungen – ein klarer Vorteil im Wettbewerb um Talente.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-direction">↓ WENIGER</div>
+        <div class="stat-number">−22%</div>
+        <div class="stat-unit">Krankentage</div>
+        <div class="stat-desc">Niedrigerer Krankenstand führt zu weniger Ausfalltagen und höherer Produktivität.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-direction">↓ WENIGER</div>
+        <div class="stat-number">−50%</div>
+        <div class="stat-unit">Fluktuation</div>
+        <div class="stat-desc">Geringere Fluktuation stärkt die Mitarbeiterbindung nachhaltig und schafft ein stabiles Umfeld.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-direction">↑ MEHR</div>
+        <div class="stat-number">+5,5×</div>
+        <div class="stat-unit">Innovationskraft</div>
+        <div class="stat-desc">Zertifizierte Unternehmen steigern ihre Innovationskraft und schaffen ein Umfeld, in dem Ideen gedeihen.</div>
+      </div>
+    </div>
+    <p style="margin-top:28px;font-size:12px;color:#666;">*Aus unserer Studie zu „Deutschlands Beste Arbeitgeber 2024". Gesamtteilnehmendenfeld: 438.283</p>
+  </div>
+</section>
+
+<!-- TRENDING -->
+<section class="trending">
+  <div class="trending-inner">
+    <div class="section-label">Beliebt &amp; Gefragt</div>
+    <h2>Unsere Trend-Themen</h2>
+    <p class="sub">Praktische Tools und Best Practices, die Unternehmen weiterbringen – jederzeit abrufbar.</p>
+    <div class="trending-grid">
+      <div class="trending-card">
+        <div class="trending-card-tag">On Demand Webinar</div>
+        <div class="trending-card-body">
+          <h3>Lernen Sie wie Sie Talente anziehen und halten</h3>
+          <p>Erfahren Sie in nur 5 Minuten, wie Sie in 3 Schritten zum "Great Place to Work" werden! Entdecken Sie, wie einfach es ist, Ihr Employer Branding zu stärken.</p>
+          <a href="#" class="link-red">Webinar sofort abrufen →</a>
+        </div>
+      </div>
+      <div class="trending-card">
+        <div class="trending-card-tag">Download: Checkliste</div>
+        <div class="trending-card-body">
+          <h3>Die 10 wichtigsten Fragen zur Vorbereitung einer Mitarbeiterbefragung</h3>
+          <p>Mit unserer Checkliste erfahren Sie, welche Schritte entscheidend sind, um aussagekräftige Ergebnisse zu erhalten.</p>
+          <a href="#" class="link-red">Jetzt downloaden →</a>
+        </div>
+      </div>
+      <div class="trending-card">
+        <div class="trending-card-tag">Download: Studienreport</div>
+        <div class="trending-card-body">
+          <h3>Lernen von „Deutschlands Besten Arbeitgebern 2025"</h3>
+          <p>Was macht einen Arbeitgeber heute wirklich großartig? Jetzt Insights und Best Practices sichern!</p>
+          <a href="#" class="link-red">Jetzt inspirieren lassen →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission">
+  <div class="mission-inner">
+    <div>
+      <div class="section-label">Unsere Mission</div>
+      <h2>Was macht Great Place To Work®?</h2>
+      <p>Great Place To Work® ist mehr als nur ein Siegel. Es ist ein Zeichen für exzellente Unternehmens- und Arbeitsplatzkultur. Unsere Kombination aus Mitarbeiterbefragungen, Zertifizierung und Beratung hilft Ihnen, Ihre Stärken als Arbeitgeber herauszustellen.</p>
+      <p>Zeigen Sie potenziellen Bewerber*innen, dass bei Ihnen Teamwork, Vertrauen und Freude an der Arbeit im Mittelpunkt stehen.</p>
+      <a href="#" class="btn-primary">Erfahren Sie mehr über unsere Mission!</a>
+      <div class="mission-features" style="margin-top:28px;">
+        <div class="mf-item">
+          <h4>📋 Mitarbeiterbefragung</h4>
+          <p>Ehrliches Feedback und wertvolle Daten zur Mitarbeiterzufriedenheit.</p>
+        </div>
+        <div class="mf-item">
+          <h4>✅ Zertifizierung</h4>
+          <p>Machen Sie Ihre starke Unternehmenskultur sichtbar!</p>
+        </div>
+        <div class="mf-item">
+          <h4>🏅 Auszeichnung</h4>
+          <p>Jährliche Auszeichnung der besten Arbeitgeber Deutschlands.</p>
+        </div>
+        <div class="mf-item">
+          <h4>🔄 Kulturentwicklung</h4>
+          <p>Von der Planung bis zur erfolgreichen Umsetzung Ihrer Kulturmaßnahmen.</p>
+        </div>
+      </div>
+    </div>
+    <div class="mission-img-wrap">
+      <div class="mission-collage">
+        <div class="mission-collage-cell">🤝</div>
+        <div class="mission-collage-cell">📈</div>
+        <div class="mission-collage-cell">💼</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="kontakt">
+  <div class="contact-inner">
+    <div class="contact-form">
+      <h2>Lassen Sie uns miteinander sprechen</h2>
+      <p>Schreiben Sie uns eine Nachricht und wir nehmen dann den Kontakt mit Ihnen auf!</p>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" placeholder="Ihr Name">
+      </div>
+      <div class="form-group">
+        <label>E-Mail</label>
+        <input type="email" placeholder="ihre@email.de">
+      </div>
+      <div class="form-group">
+        <label>Unternehmen</label>
+        <input type="text" placeholder="Ihr Unternehmen">
+      </div>
+      <div class="form-group">
+        <label>Nachricht</label>
+        <textarea placeholder="Wie können wir Ihnen helfen?"></textarea>
+      </div>
+      <button class="btn-primary" style="border:none;cursor:pointer;width:100%;">Nachricht senden</button>
+    </div>
+    <div>
+      <div class="newsletter-box">
+        <h3>Auf dem Laufenden bleiben</h3>
+        <p>Melden Sie sich für unseren Newsletter an und erhalten Sie zuerst Updates zu Veranstaltungen, Veröffentlichungen, Neuigkeiten und Blogs.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Ihre E-Mail-Adresse">
+          <button>Anmelden</button>
+        </div>
+      </div>
+      <div style="margin-top:24px;padding:28px;background:#fff;border:1px solid #e0e0e0;border-radius:4px;">
+        <div style="font-size:32px;margin-bottom:12px;">🤖</div>
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Fragen Sie unseren KI Assistent</h3>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;line-height:1.6;">Stellen Sie Ihre Fragen — und erhalten Sie sofort Antworten zu Employer Branding, der Great Place To Work® Methode, Kulturentwicklung und weiteren HR-Themen.</p>
+        <button onclick="openChat()" class="btn-primary" style="border:none;cursor:pointer;">Jetzt Frage stellen →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-icon">GPTW</div>
+        <p>Our mission is to help every place become a great place to work for all.</p>
+        <div class="social-links" style="margin-top:16px;">
+          <a href="#" class="social-link">in</a>
+          <a href="#" class="social-link">📸</a>
+          <a href="#" class="social-link">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Angebot</h4>
+        <ul>
+          <li><a href="#">Zertifizierung</a></li>
+          <li><a href="#">Mitarbeiterbefragung</a></li>
+          <li><a href="#">Arbeitgeberwettbewerbe</a></li>
+          <li><a href="#">Consulting</a></li>
+          <li><a href="#">Academy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Beste Arbeitgeber</h4>
+        <ul>
+          <li><a href="#">Zertifizierte Unternehmen</a></li>
+          <li><a href="#">Branchen und Regionen</a></li>
+          <li><a href="#">Alle Listen</a></li>
+          <li><a href="#">Nominate your Company</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Insights</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Downloads</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Über uns</h4>
+        <ul>
+          <li><a href="#">Unsere Mission</a></li>
+          <li><a href="#">Unser Team</a></li>
+          <li><a href="#">Kontakt</a></li>
+          <li><a href="#">Karriere</a></li>
+          <li><a href="#">Presse</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>©2025 Great Place To Work® Institute Inc. All Rights Reserved.</span>
+      <span><a href="#">Datenschutz</a> &nbsp;|&nbsp; <a href="#">Impressum</a> &nbsp;|&nbsp; <a href="#">Hinweisgeber Formular</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY BANNER -->
+<div class="sticky-banner" id="stickyBanner">
+  <div class="sticky-banner-text">
+    🏆 <strong>Die neuen Champions sind da!</strong> — Am 4. März 2026 haben wir die Siegerlisten veröffentlicht. Entdecken Sie jetzt die Great Place To Work® Champions 2026!
+  </div>
+  <a href="#" class="btn-primary">Champions ansehen</a>
+  <span class="banner-close" onclick="document.getElementById('stickyBanner').style.display='none'">✕</span>
+</div>
+
+<!-- CHATBOT FAB -->
+<div class="chatbot-fab">
+  <div class="chatbot-bubble" onclick="toggleChat()" title="KI Assistent">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 10H6v-2h12v2zm0-4H6V6h12v2z"/>
+    </svg>
+    <div class="chat-pulse"></div>
+  </div>
+</div>
+
+<!-- CHATBOT WINDOW -->
+<div class="chatbot-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">🤖</div>
+    <div class="chat-header-info">
+      <h4>KI Assistent</h4>
+      <p>Great Place To Work® — Online</p>
+    </div>
+    <span class="chat-close" onclick="toggleChat()">✕</span>
+  </div>
+
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">
+      <div class="chat-sender">KI Assistent</div>
+      <div class="chat-bubble">Guten Tag! 👋 Ich bin der KI Assistent von Great Place To Work® Deutschland. Wie kann ich Ihnen helfen?<br><br>Fragen Sie mich zu Zertifizierung, Mitarbeiterbefragung, Employer Branding oder unseren Auszeichnungen!</div>
+    </div>
+  </div>
+
+  <div class="chat-suggestions" id="chatSuggestions">
+    <div class="chat-chip" onclick="sendChip(this)">Was ist eine Zertifizierung?</div>
+    <div class="chat-chip" onclick="sendChip(this)">Wie bewerbe ich mich?</div>
+    <div class="chat-chip" onclick="sendChip(this)">Kosten &amp; Preise</div>
+    <div class="chat-chip" onclick="sendChip(this)">Mitarbeiterbefragung</div>
+  </div>
+
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Ihre Frage eingeben..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button id="chatSend" onclick="sendMessage()">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  let chatOpen = false;
+  const SYSTEM_PROMPT = `Du bist ein freundlicher und professioneller KI Assistent für Great Place To Work® Deutschland. Du beantwortest Fragen rund um:
+- Die Great Place To Work® Zertifizierung und deren Ablauf
+- Mitarbeiterbefragungen und deren Nutzen
+- Employer Branding und Arbeitgeberattraktivität
+- Die "Beste Arbeitgeber" Listen und Auszeichnungen
+- Consulting und Academy Angebote
+- Allgemeine HR-Themen und Unternehmenskultur
+
+Antworte immer auf Deutsch, präzise und hilfreich. Wenn du keine genaue Information hast, empfehle dem Nutzer, das Team unter +49 (0)221 93 335 0 oder info@greatplacetowork.de zu kontaktieren. Halte Antworten unter 200 Wörtern.`;
+
+  function toggleChat() {
+    chatOpen = !chatOpen;
+    document.getElementById('chatWindow').classList.toggle('open', chatOpen);
+  }
+
+  function openChat() {
+    chatOpen = true;
+    document.getElementById('chatWindow').classList.add('open');
+  }
+
+  function sendChip(el) {
+    document.getElementById('chatInput').value = el.textContent;
+    sendMessage();
+    document.getElementById('chatSuggestions').style.display = 'none';
+  }
+
+  let conversationHistory = [];
+
+  async function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+
+    appendMsg('user', msg);
+    conversationHistory.push({ role: 'user', content: msg });
+
+    const typingId = showTyping();
+
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: conversationHistory
+        })
+      });
+      const data = await response.json();
+      removeTyping(typingId);
+      const reply = data.content?.[0]?.text || 'Entschuldigung, ich konnte keine Antwort generieren. Bitte kontaktieren Sie uns direkt.';
+      appendMsg('bot', reply);
+      conversationHistory.push({ role: 'assistant', content: reply });
+    } catch (e) {
+      removeTyping(typingId);
+      appendMsg('bot', 'Es gab einen technischen Fehler. Bitte wenden Sie sich direkt an unser Team: info@greatplacetowork.de oder +49 (0)221 93 335 0.');
+    }
+  }
+
+  function appendMsg(role, text) {
+    const msgs = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = `chat-msg ${role}`;
+    div.innerHTML = `
+      ${role === 'bot' ? '<div class="chat-sender">KI Assistent</div>' : ''}
+      <div class="chat-bubble">${text.replace(/\n/g,'<br>')}</div>
+    `;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function showTyping() {
+    const msgs = document.getElementById('chatMessages');
+    const id = 'typing-' + Date.now();
+    const div = document.createElement('div');
+    div.id = id;
+    div.className = 'chat-msg bot';
+    div.innerHTML = `<div class="chat-sender">KI Assistent</div><div class="chat-bubble"><div class="chat-typing"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div></div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return id;
+  }
+
+  function removeTyping(id) {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  }
+</script>
+</body>
+</html>
