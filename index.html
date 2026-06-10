@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Great Place To Work® Deutschland – Demo</title>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>Great Place To Work® Deutschland – Demo</title>
+  <link rel="icon" type="image/png" href="images/gptw-ms-icon-144.png">
+  <meta property="og:image" content="images/gptw-home-og.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -63,6 +65,7 @@
     height: 72px;
   }
   .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-img { height: 40px; width: auto; flex-shrink: 0; }
   .logo-icon {
     width: 48px; height: 48px;
     background: var(--red);
@@ -102,7 +105,9 @@
     z-index: 999;
   }
   .dropdown a {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
     padding: 12px 20px;
     font-size: 13px;
     font-weight: 400;
@@ -110,6 +115,8 @@
     transition: background .15s;
   }
   .dropdown a:hover { background: var(--gray-light); color: var(--red); }
+  .dropdown a .nav-icon { width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; }
+  .dropdown a .nav-link-text { flex: 1; }
   .dropdown a strong { display: block; font-weight: 600; font-size: 13px; }
   .dropdown a small { color: var(--gray-mid); font-size: 11px; line-height: 1.4; }
 
@@ -246,7 +253,9 @@
     align-items: center;
     justify-content: center;
     font-size: 48px;
+    padding: 24px;
   }
+  .solution-card-img img { max-height: 80px; width: auto; }
   .solution-card-body { padding: 16px; }
   .solution-card-body h3 { font-size: 15px; font-weight: 700; color: var(--red); }
 
@@ -310,6 +319,7 @@
     border: 1px solid var(--border);
     transition: box-shadow .2s;
   }
+  .trending-card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
   .trending-card:hover { box-shadow: var(--shadow); }
   .trending-card-tag {
     background: var(--red);
@@ -389,6 +399,7 @@
   .footer-inner { max-width: 1200px; margin: 0 auto; }
   .footer-top { display: grid; grid-template-columns: 200px repeat(4, 1fr); gap: 40px; margin-bottom: 48px; }
   .footer-brand .logo-icon { width: 56px; height: 56px; font-size: 14px; margin-bottom: 16px; }
+  .footer-brand .footer-logo-img { height: 36px; width: auto; margin-bottom: 16px; }
   .footer-brand p { font-size: 12px; line-height: 1.6; color: #888; }
   .footer-col h4 { color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
   .footer-col ul { list-style: none; }
@@ -429,8 +440,10 @@
   .sticky-banner strong { color: var(--red); }
   .sticky-banner-text { flex: 1; }
   .sticky-banner .btn-primary { padding: 8px 20px; font-size: 13px; white-space: nowrap; }
-  .banner-close { cursor: pointer; color: #888; font-size: 18px; margin-left: 8px; line-height: 1; }
+  .banner-close { cursor: pointer; color: #888; font-size: 18px; margin-left: 8px; line-height: 1; display: flex; align-items: center; }
   .banner-close:hover { color: #fff; }
+  .banner-close img { width: 16px; height: 16px; filter: brightness(0) invert(0.5); transition: filter .2s; }
+  .banner-close:hover img { filter: brightness(0) invert(1); }
 
   /* ─── CHATBOT ─── */
   .chatbot-fab {
@@ -626,54 +639,53 @@
 <header>
   <div class="header-inner">
     <div class="logo">
-      <div class="logo-icon">GPTW</div>
-      <div class="logo-text">Great Place<br>To <span>Work</span><sup style="font-size:9px">®</sup></div>
+      <a href="#"><img src="images/gptw-logo-red.svg" alt="Great Place To Work® Logo" class="logo-img"></a>
     </div>
     <nav>
       <div class="nav-item">Zertifizierung <span class="arrow">▾</span>
         <div class="dropdown">
-          <a href="#"><strong>Zertifizierung</strong><small>Messung, Prüfung und Entwicklung einer attraktiven Arbeitsplatzkultur</small></a>
-          <a href="#"><strong>Zertifizierte Arbeitgeber</strong><small>Übersicht der zertifizierten Arbeitgeber</small></a>
-          <a href="#"><strong>FAQ</strong><small>Häufige Fragen zur Zertifizierung</small></a>
+          <a href="#"><img src="images/icon-certification.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Zertifizierung</strong><small>Messung, Prüfung und Entwicklung einer attraktiven Arbeitsplatzkultur</small></span></a>
+          <a href="#"><img src="images/icon-view-certified.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Zertifizierte Arbeitgeber</strong><small>Übersicht der zertifizierten Arbeitgeber</small></span></a>
+          <a href="#"><img src="images/icon-article.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>FAQ</strong><small>Häufige Fragen zur Zertifizierung</small></span></a>
         </div>
       </div>
       <div class="nav-item">Angebot <span class="arrow">▾</span>
         <div class="dropdown">
-          <a href="#"><strong>Mitarbeiterbefragung</strong><small>Gewinnen Sie Einblicke für die richtigen Maßnahmen</small></a>
-          <a href="#"><strong>Arbeitgeberwettbewerbe</strong><small>Beste Arbeitgeber Siegel & Sichtbarkeit</small></a>
-          <a href="#"><strong>Consulting</strong><small>Beratung, Workshops, Trainings</small></a>
-          <a href="#"><strong>Academy</strong><small>Trainings- und Ausbildungsangebote</small></a>
+          <a href="#"><img src="images/icon-employee-surveys.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Mitarbeiterbefragung</strong><small>Gewinnen Sie Einblicke für die richtigen Maßnahmen</small></span></a>
+          <a href="#"><img src="images/icon-best-workplaces-lists.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Arbeitgeberwettbewerbe</strong><small>Beste Arbeitgeber Siegel & Sichtbarkeit</small></span></a>
+          <a href="#"><img src="images/icon-reports-analysis.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Consulting</strong><small>Beratung, Workshops, Trainings</small></span></a>
+          <a href="#"><img src="images/icon-for-all-summit.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Academy</strong><small>Trainings- und Ausbildungsangebote</small></span></a>
         </div>
       </div>
       <div class="nav-item">Beste Arbeitgeber <span class="arrow">▾</span>
         <div class="dropdown">
-          <a href="#"><strong>Deutschlands Beste Arbeitgeber 2026</strong><small>Top 100 in verschiedenen Größenklassen</small></a>
-          <a href="#"><strong>Branchen &amp; Regionen</strong><small>11 Branchen- und Regionalwettbewerbe</small></a>
-          <a href="#"><strong>Beste Arbeitgeber für Frauen</strong></a>
-          <a href="#"><strong>Weltweit Beste Arbeitgeber</strong></a>
+          <a href="#"><img src="images/icon-popular-lists.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Deutschlands Beste Arbeitgeber 2026</strong><small>Top 100 in verschiedenen Größenklassen</small></span></a>
+          <a href="#"><img src="images/icon-view-all-lists.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Branchen &amp; Regionen</strong><small>11 Branchen- und Regionalwettbewerbe</small></span></a>
+          <a href="#"><img src="images/icon-best-workplaces-lists.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Beste Arbeitgeber für Frauen</strong></span></a>
+          <a href="#"><img src="images/icon-best-workplaces-lists.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Weltweit Beste Arbeitgeber</strong></span></a>
         </div>
       </div>
       <div class="nav-item">Ressourcen <span class="arrow">▾</span>
         <div class="dropdown">
-          <a href="#"><strong>Blog</strong></a>
-          <a href="#"><strong>Downloads</strong></a>
-          <a href="#"><strong>Podcast</strong></a>
-          <a href="#"><strong>Testimonials</strong></a>
+          <a href="#"><img src="images/icon-article.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Blog</strong></span></a>
+          <a href="#"><img src="images/icon-reports-analysis.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Downloads</strong></span></a>
+          <a href="#"><img src="images/icon-podcast.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Podcast</strong></span></a>
+          <a href="#"><img src="images/icon-video.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Testimonials</strong></span></a>
         </div>
       </div>
       <div class="nav-item">Events <span class="arrow">▾</span>
         <div class="dropdown">
-          <a href="#"><strong>Events</strong></a>
-          <a href="#"><strong>On Demand Webinare</strong></a>
-          <a href="#"><strong>Certification Nation Day</strong></a>
+          <a href="#"><img src="images/icon-for-all-summit.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Events</strong></span></a>
+          <a href="#"><img src="images/icon-webinars.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>On Demand Webinare</strong></span></a>
+          <a href="#"><img src="images/icon-certification.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Certification Nation Day</strong></span></a>
         </div>
       </div>
       <div class="nav-item">Über uns <span class="arrow">▾</span>
         <div class="dropdown">
-          <a href="#"><strong>Unsere Mission</strong></a>
-          <a href="#"><strong>Unser Team</strong></a>
-          <a href="#"><strong>Karriere</strong></a>
-          <a href="#"><strong>FAQ</strong></a>
+          <a href="#"><img src="images/icon-article.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Unsere Mission</strong></span></a>
+          <a href="#"><img src="images/icon-case-studies.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Unser Team</strong></span></a>
+          <a href="#"><img src="images/icon-article.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>Karriere</strong></span></a>
+          <a href="#"><img src="images/icon-article.svg" alt="" class="nav-icon"><span class="nav-link-text"><strong>FAQ</strong></span></a>
         </div>
       </div>
     </nav>
@@ -693,11 +705,8 @@
       <a href="#kontakt" class="btn-primary">Jetzt Kontakt aufnehmen</a>
     </div>
     <div class="hero-img-wrap">
-      <div class="hero-img-placeholder">
-        <div class="hero-img-inner">
-          <div class="hero-people">👥</div>
-          <div class="hero-img-label">Lächelnde Mitarbeitende</div>
-        </div>
+      <div class="hero-img-placeholder" style="padding:0;">
+        <img src="images/gptw-home-og.jpg" alt="Great Place To Work – Lächelnde Mitarbeitende" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
       </div>
     </div>
   </div>
@@ -710,19 +719,19 @@
     <h2 class="section-title">Unsere Lösungen für eine herausragende Arbeitsplatzkultur</h2>
     <div class="solutions-grid">
       <div class="solution-card">
-        <div class="solution-card-img">📊</div>
+        <div class="solution-card-img"><img src="images/icon-employee-surveys.svg" alt="Mitarbeiterbefragung"></div>
         <div class="solution-card-body"><h3>Mitarbeiterbefragung</h3></div>
       </div>
       <div class="solution-card">
-        <div class="solution-card-img">🏆</div>
+        <div class="solution-card-img"><img src="images/icon-certification.svg" alt="Zertifizierung"></div>
         <div class="solution-card-body"><h3>Zertifizierung</h3></div>
       </div>
       <div class="solution-card">
-        <div class="solution-card-img">🥇</div>
+        <div class="solution-card-img"><img src="images/icon-best-workplaces-lists.svg" alt="Beste Arbeitgeber Listen"></div>
         <div class="solution-card-body"><h3>Beste Arbeitgeber Listen</h3></div>
       </div>
       <div class="solution-card">
-        <div class="solution-card-img">💡</div>
+        <div class="solution-card-img"><img src="images/icon-reports-analysis.svg" alt="Consulting"></div>
         <div class="solution-card-body"><h3>Consulting</h3></div>
       </div>
     </div>
@@ -792,6 +801,7 @@
     <p class="sub">Praktische Tools und Best Practices, die Unternehmen weiterbringen – jederzeit abrufbar.</p>
     <div class="trending-grid">
       <div class="trending-card">
+        <img src="images/featured-why-gptw.png" alt="Why GPTW" class="trending-card-img">
         <div class="trending-card-tag">On Demand Webinar</div>
         <div class="trending-card-body">
           <h3>Lernen Sie wie Sie Talente anziehen und halten</h3>
@@ -800,6 +810,7 @@
         </div>
       </div>
       <div class="trending-card">
+        <img src="images/featured-best-workplaces.png" alt="Best Workplaces" class="trending-card-img">
         <div class="trending-card-tag">Download: Checkliste</div>
         <div class="trending-card-body">
           <h3>Die 10 wichtigsten Fragen zur Vorbereitung einer Mitarbeiterbefragung</h3>
@@ -808,6 +819,7 @@
         </div>
       </div>
       <div class="trending-card">
+        <img src="images/featured-gptw-effect.png" alt="GPTW Effect" class="trending-card-img">
         <div class="trending-card-tag">Download: Studienreport</div>
         <div class="trending-card-body">
           <h3>Lernen von „Deutschlands Besten Arbeitgebern 2025"</h3>
@@ -849,9 +861,9 @@
     </div>
     <div class="mission-img-wrap">
       <div class="mission-collage">
-        <div class="mission-collage-cell">🤝</div>
-        <div class="mission-collage-cell">📈</div>
-        <div class="mission-collage-cell">💼</div>
+        <div class="mission-collage-cell" style="padding:0;overflow:hidden;"><img src="images/featured-why-gptw.png" alt="Teamwork" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="mission-collage-cell" style="padding:0;overflow:hidden;"><img src="images/featured-best-workplaces.png" alt="Best Workplaces" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="mission-collage-cell" style="padding:0;overflow:hidden;"><img src="images/featured-gptw-effect.png" alt="GPTW Effect" style="width:100%;height:100%;object-fit:cover;"></div>
       </div>
     </div>
   </div>
@@ -905,7 +917,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="logo-icon">GPTW</div>
+        <img src="images/gptw-logo-red.svg" alt="Great Place To Work® Logo" class="footer-logo-img">
         <p>Our mission is to help every place become a great place to work for all.</p>
         <div class="social-links" style="margin-top:16px;">
           <a href="#" class="social-link">in</a>
@@ -966,7 +978,7 @@
     🏆 <strong>Die neuen Champions sind da!</strong> — Am 4. März 2026 haben wir die Siegerlisten veröffentlicht. Entdecken Sie jetzt die Great Place To Work® Champions 2026!
   </div>
   <a href="#" class="btn-primary">Champions ansehen</a>
-  <span class="banner-close" onclick="document.getElementById('stickyBanner').style.display='none'">✕</span>
+  <span class="banner-close" onclick="document.getElementById('stickyBanner').style.display='none'"><img src="images/icon-close.svg" alt="Close"></span>
 </div>
 
 <!-- CHATBOT FAB -->
